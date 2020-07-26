@@ -1,0 +1,11 @@
+.App {
+  font-family: 'Inter';
+  display: grid;
+}
+*::placeholder {
+  font-family: 'Inter';
+}
+body{
+  background-color: #f4f4fa;
+}
+

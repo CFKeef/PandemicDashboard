@@ -2,10 +2,12 @@ import React from 'react';
 
 import './FullDash.css';
 
+import MapCard from '../MapCard/MapCard.js';
+
 const FullDash = () => {
-    return(
+    return (
         <div className="fulldash">
-            <p>full test</p>
+            <MapCard />
         </div>
     )
 }

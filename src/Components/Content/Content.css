@@ -3,6 +3,9 @@
         display: grid;
         grid-template-columns: repeat(10,1fr);
         grid-template-rows: repeat(11,1fr);
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
     }
     .minidash{
         grid-area: 1 / 1 / 4 / 8;
@@ -15,12 +18,5 @@
     .fulldash{
         grid-area: 4 / 1 / 12 / 8;
         margin: 2REM;
-    }
-}
-
-@media screen and (min-width: 1921px){
-    .content-container{
-        max-width: 90%;
-        margin: 0 auto;
     }
 }

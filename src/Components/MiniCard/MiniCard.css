@@ -1,23 +1,20 @@
-@media screen and (min-width: 415px) and (max-width:1921px){
+@media screen and (min-width: 415px) {
     .minicard{
         display: inline-block;
         text-align: center;
         background-color: white;
         border-radius: 20px;
-        height: 100%;
-        width: 30%;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        margin: 0 1.5REM;
+        white-space: nowrap;
     }
     .minicard h2 {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 20px;
         color: rgba(0,0,0,.75);
-
     }
     .minicard h1{
         font-weight: 700;
-        font-size: 22px;
+        font-size: 25px;
     }
     .c1 {
         color: rgba(50, 103, 231, .75);
@@ -30,5 +27,22 @@
     }
     .c4 {
         color: rgba(180,150,214,.75);
+    }
+}
+@media screen and (min-width: 416px) and (max-width: 1921px) {
+    .minicard{
+        height: 100%;
+        min-width: 15%;
+        margin: 0 1REM;
+        padding: .2REM 2REM;
+    }
+
+}
+
+@media screen and (min-width: 1921px) {
+    .minicard{
+        height: 100%;
+        width: 30%;
+        margin: 0 1REM;
     }
 }

@@ -1,0 +1,19 @@
+@media screen and (min-width: 416px){
+    .leaderboard{
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        overflow: hidden;
+    }
+    .lbheader {
+        display: flex;
+        justify-content: center;
+    }
+    .lbheader h1{
+        text-align: center;
+        width: 50%;
+        font-size: 20px;
+        padding-top: .5REM;
+        color: rgba(0,0,0,.75);
+    }
+}

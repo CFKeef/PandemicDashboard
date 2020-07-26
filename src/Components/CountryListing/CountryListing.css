@@ -1,0 +1,21 @@
+@media screen and (min-width: 416px) {
+    .listing{
+        display: grid;
+        grid-template-columns: .5fr repeat(2, 1fr);
+        grid-template-rows: .5fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px; 
+        border: .5px solid rgba(0,0,0,.12);
+        border-radius: 19px;
+        margin: 1REM;
+    }
+    .listing h2{
+        font-size: 18px;
+    }
+    .cname {
+        color: rgba(0,0,0,.55); 
+    }
+    .ccount {
+        color: rgba(230, 0, 0, .55);
+    }
+}

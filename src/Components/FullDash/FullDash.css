@@ -1,0 +1,8 @@
+@media screen and (min-width: 415px){
+    .fulldash {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+}

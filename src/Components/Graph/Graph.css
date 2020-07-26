@@ -1,0 +1,21 @@
+.graph{
+    height: 50%;
+    width: 100%;
+}
+.linear, .log {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.linear{
+    margin-bottom: 2REM;
+}
+
+.graph p {
+    font-size: 18px;
+    color: rgba(0,0,0,.75);
+    text-align: center;
+    font-weight: 700;
+}

@@ -5,7 +5,7 @@ import './MapUnit.css';
 const MapUnit = () => {
     return(
         <div className="map">
-
+            
         </div>
     )
 }

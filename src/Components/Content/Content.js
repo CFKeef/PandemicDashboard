@@ -17,20 +17,23 @@ const Content = () => {
         deaths: null,
         todayDeaths: null
     })
-    const [soretedLit, setSortedList] = useState([]);
+    const [sortedList, setSortedList] = useState([]);
 
     const backEndCalls = () =>{
         axios.all(
             axios.get('http://localhost:3001/worldwide'),
             axios.get('http://localhost:3001/sortedlist')
-        ).then( (res1, res2, res3) => {
+        ).then( (res1, res2) => {
             const ww = res1;
-            const cl = res2;
+            const sl = res2;
             
-            // Do stuff with it
+            console.log(ww,sl);
         }).catch(err => {console.err(err)})
     };
 
+    useEffect( () => {
+        backEndCalls();
+    })
     return (
         <div className="content-container">
             <MiniDash />

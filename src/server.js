@@ -19,7 +19,7 @@ let worldWide = ({
     deaths: null,
     todayDeaths: null
 })
-let countryList = [];
+//let countryList = [];
 let sortedList = [];
 
 // Creates the worldwide object
@@ -121,13 +121,13 @@ setUpSortedList = async () => {
 
 // Set up once and then rely on updater to update the data 
 setUpWorldWide();
-setUpCountryList();
+//setUpCountryList();
 setUpSortedList();
 
 // Updater function - updates every 6 hours
 updater = () => {
     setUpWorldWide();
-    setUpCountryList();
+    //setUpCountryList();
     setUpSortedList();
     setTimeout(updater, 43200000);
 }
@@ -136,9 +136,9 @@ app.get('/worldwide', (req, res) => {
     res.send(worldWide);
 })
 
-app.get('/countrylist', (req, rest) => {
-    res.send(countryList);
-})
+// app.get('/countrylist', (req, rest) => {
+//     res.send(countryList);
+// })
 
 app.get('/sortedlist', (req,res) => {
     res.send(sortedList);

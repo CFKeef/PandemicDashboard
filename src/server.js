@@ -20,6 +20,7 @@ let worldWide = ({
     todayDeaths: null
 })
 let countryList = [];
+let sortedList = [];
 
 // Creates the worldwide object
 getWorldWideData = async () => {
@@ -55,8 +56,6 @@ setUpWorldWide = async () => {
     worldWide.deaths = ww.deaths;
     worldWide.todayDeaths = ww.todayDeaths;
 }
-setUpWorldWide();
-
 // Creates the countryList array with every country with the properties we need
 getCountryListData = async () => {
     let response;
@@ -73,8 +72,6 @@ getCountryListData = async () => {
 setUpCountryList = async () => {
     let cl = await getCountryListData();
         cl.forEach(element => {
-            ///element.property
-
             countryList.push(
                 {
                     flag: element.countryInfo.flag,
@@ -90,13 +87,49 @@ setUpCountryList = async () => {
             )
     })
 }
-setUpCountryList();
+// Create the sorted country list
+getSortedListData = async () => {
+    let response;
 
-// Updater function - updates each hour
+    try {
+        response = await axios.get('https://disease.sh/v3/covid-19/countries?sort=cases')
+    } catch(err){
+        console.error(err);
+    }
+
+    const {data = [] } = response;
+    return data;
+}
+setUpSortedList = async () => {
+    let sl = await getSortedListData();
+        sl.forEach(element => {
+            sortedList.push(
+                {
+                    flag: element.countryInfo.flag,
+                    country: element.country,
+                    cases: element.cases,
+                    todayCases: element.todayCases,
+                    active: element.active,
+                    recovered: element.recovered,
+                    todayRecovered: element.todayRecovered,
+                    deaths: element.deaths,
+                    todayDeaths: element.todayDeaths
+                }
+            )
+    })
+}
+
+// Set up once and then rely on updater to update the data 
+setUpWorldWide();
+setUpCountryList();
+setUpSortedList();
+
+// Updater function - updates every 6 hours
 updater = () => {
     setUpWorldWide();
     setUpCountryList();
-    setTimeout(updater, 3600000);
+    setUpSortedList();
+    setTimeout(updater, 43200000);
 }
 
 app.listen(3001, () => {

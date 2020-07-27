@@ -8,30 +8,31 @@ import FullDash from '../FullDash/FullDash.js';
 import Leaderboard from '../Leaderboard/Leaderboard.js';
 
 const Content = () => {
-    const {dataCountry, setCountryData} = useState({
-        country: '',
-        countryData: {
-            caseCount: '',
-            activeCase: '',
-            recovered: '', 
-            deaths: '',
-            todayCount: '',
-            todayActive: '',
-            todayRecovered: '',
-            todayDeaths: ''
-        }
+    const [worldWide, setWorldWide] = useState({
+        cases: null,
+        todayCases: null,
+        active: null,
+        recovered: null,
+        todayRecovered: null,
+        deaths: null,
+        todayDeaths: null
     })
+    const [countryList, setCountryList] = useState([]);
+    const [soretedLit, setSortedList] = useState([]);
 
-    const {dataWorldWide, setWorldWideData} = useState({
-        caseCount: '',
-        activeCase: '',
-        recovered: '', 
-        deaths: '',
-        todayCount: '',
-        todayActive: '',
-        todayRecovered: '',
-        todayDeaths: ''
-    })
+    const backEndCalls = () =>{
+        axios.all(
+            axios.get('http://localhost:3001/worldwide'),
+            axios.get('http://localhost:3001/countrylist'),
+            axios.get('http://localhost:3001/sortedlist')
+        ).then( (res1, res2, res3) => {
+            const ww = res1;
+            const cl = res2;
+            const sl = res3;
+            
+            // Do stuff with it
+        }).catch(err => {console.err(err)})
+    };
 
     return (
         <div className="content-container">

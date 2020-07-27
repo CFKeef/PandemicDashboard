@@ -132,6 +132,18 @@ updater = () => {
     setTimeout(updater, 43200000);
 }
 
+app.get('/worldwide', (req, res) => {
+    res.send(worldWide);
+})
+
+app.get('/countrylist', (req, rest) => {
+    res.send(countryList);
+})
+
+app.get('/sortedlist', (req,res) => {
+    res.send(sortedList);
+})
+
 app.listen(3001, () => {
     console.log('Listening');
 });

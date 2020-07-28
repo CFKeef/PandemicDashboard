@@ -1,25 +1,23 @@
-@media screen and (min-width: 416px) {
-    .listing{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border: .5px solid rgba(0,0,0,.12);
-        border-radius: 19px;
-        margin: 1REM;
-    }
-    .listing h2{
-        font-size: 18px;
-    }
-    .cflag{
-        height: 100%;
-        width: 30%;
-        padding-left: .5REM;
-    }
-    .cname {
-        color: rgba(0,0,0,.55); 
-    }
-    .ccount {
-        color: rgba(230, 0, 0, .55);
-    }
+.listing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: .5px solid rgba(0,0,0,.12);
+    border-radius: 19px;
+    margin: 1REM;
+}
+.listing h2{
+    font-size: 18px;
+}
+.cflag{
+    height: 100%;
+    width: 30%;
+    padding-left: .5REM;
+}
+.cname {
+    color: rgba(0,0,0,.55); 
+}
+.ccount {
+    color: rgba(230, 0, 0, .55);
 }

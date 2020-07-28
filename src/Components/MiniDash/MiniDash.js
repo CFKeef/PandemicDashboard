@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Axios from 'axios';
 
 import './MiniDash.css';
 
 import MiniCard from '../MiniCard/MiniCard.js';
 
-const MiniDash = () => {
+const MiniDash = props => {
     const [card1, setCard1] = useState({
         id: 'c1',
         title: 'Total Infections',
@@ -29,6 +28,29 @@ const MiniDash = () => {
         title: 'Deaths',
         number: '8,512,321',
         todaysnumber: '-252'
+    })
+
+    useEffect( () => {
+        setCard1( prevState => ({
+            ...prevState,
+            number: props.currentData.cases,
+            todaysnumber: props.currentData.todayCases
+        }))
+        setCard2( prevState => ({
+            ...prevState,
+            number: props.currentData.active,
+            todaysnumber: props.currentData.todayCases
+        }))
+        setCard3( prevState => ({
+            ...prevState,
+            number: props.currentData.recovered,
+            todaysnumber: props.currentData.todayRecovered
+        }))
+        setCard4( prevState => ({
+            ...prevState,
+            number: props.currentData.deaths,
+            todaysnumber: props.currentData.todayDeaths
+        }))
     })
 
     // Return

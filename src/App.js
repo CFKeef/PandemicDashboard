@@ -72,6 +72,7 @@ function App() {
         worldWideData={worldWide}
         currentData={current}
         sortedData={sortedList}
+        updateCurrent={setCurrent}
       />
     </div>
   );

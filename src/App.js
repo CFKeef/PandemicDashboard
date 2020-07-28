@@ -19,7 +19,7 @@ function App() {
       todayDeaths: null
   })
   const [current, setCurrent] = useState({
-      country: 'all',
+      country: 'all countries',
       cases: null,
       todayCases: null,
       active: null,
@@ -37,7 +37,7 @@ function App() {
 
         // Update worldwide's state
         setWorldWide( () => ({
-          country: 'all',
+          country: 'all countries',
           cases: ww.data.cases,
           todayCases: ww.data.todayCases,
           active: ww.data.active,
@@ -49,7 +49,7 @@ function App() {
 
         //Update current to worldwide
         setCurrent( () => ({
-          country: 'all',
+          country: 'all countries',
           cases: ww.data.cases,
           todayCases: ww.data.todayCases,
           active: ww.data.active,

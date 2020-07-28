@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './CountryListing.css';
 
-const CountryListing = (props) => {
+const CountryListing = props => {
+    const [name, setName] = useState(props.countryName);
+    const [count, setCount] = useState(props.countryCount);
+    const [flag, setFlag] = useState(props.flag);
+
+    useEffect( () => {
+        setName(props.countryName);
+        setCount(props.countryCount);
+        setFlag(props.flag)
+    },[props])
+
     return (
         <div className="listing">
-            <img src=""></img>
-            <h2 className="cname">{props.countryName}</h2>
-            <h2 className="ccount">{props.countryCount}</h2>
+            <img className="cflag" src={flag}></img>
+            <h2 className="cname">{name}</h2>
+            <h2 className="ccount">{count}</h2>
         </div>
     )
 }

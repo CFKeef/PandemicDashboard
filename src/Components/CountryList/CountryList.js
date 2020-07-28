@@ -1,59 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './CountryList.css';
 
 import CountryListing from '../CountryListing/CountryListing.js';
+import { render } from '@testing-library/react';
 
-const CountryList = () => {
-    const [countryName, setCountryName] = useState('USA');
-    const [countryCount, setCountryCount] = useState('2132131312');
+const CountryList = props => {
+    const [data, setData] = useState(props.sortedData);
+
+    useEffect( () => {
+        setData(props.sortedData);
+    },[props.sortedData])
 
     return (
-        <div className="countrylist">
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
-            <CountryListing 
-                countryName={countryName} 
-                countryCount={countryCount}
-            />
+        <div className="countrylist">  
+            {props.sortedData.map(element => {return element.map( countryListing => {
+             return (<CountryListing 
+                countryName={countryListing.country}
+                countryCount={countryListing.cases}
+                flag={countryListing.flag}
+            />)
+        })})}
         </div>
     )
 }

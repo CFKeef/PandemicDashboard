@@ -21,6 +21,7 @@ const Content = props => {
             <Leaderboard 
                 sortedData={props.sortedData}
                 updateCurrent={props.updateCurrent}
+                currentShown={props.currentData.country}
             />
         </div>
     )

@@ -55,6 +55,8 @@ setUpWorldWide = async () => {
     worldWide.todayRecovered = ww.todayRecovered;
     worldWide.deaths = ww.deaths;
     worldWide.todayDeaths = ww.todayDeaths;
+
+    console.log('ww set up');
 }
 // Creates the countryList array with every country with the properties we need
 getCountryListData = async () => {
@@ -117,6 +119,7 @@ setUpSortedList = async () => {
                 }
             )
     })
+    console.log('sl set up');
 }
 
 // Set up once and then rely on updater to update the data 
@@ -133,7 +136,11 @@ updater = () => {
 }
 
 app.get('/worldwide', (req, res) => {
-    res.send(worldWide);
+    try {
+        res.send(worldWide);
+    }catch(err){
+        res.send("somethings fucked");
+    }
 })
 
 // app.get('/countrylist', (req, rest) => {

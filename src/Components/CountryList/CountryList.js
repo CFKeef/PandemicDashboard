@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 import './CountryList.css';
 
 import CountryListing from '../CountryListing/CountryListing.js';
-import { render } from '@testing-library/react';
 
 const CountryList = props => {
     const [data, setData] = useState(props.sortedData);
@@ -14,8 +13,9 @@ const CountryList = props => {
 
     return (
         <div className="countrylist">  
-            {props.sortedData.map(element => {return element.map( countryListing => {
+            {data.map(element => {return element.map( countryListing => {
              return (<CountryListing 
+                key={countryListing.country}
                 countryName={countryListing.country}
                 countryCount={countryListing.cases}
                 flag={countryListing.flag}

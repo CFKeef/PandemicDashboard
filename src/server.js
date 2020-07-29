@@ -19,8 +19,8 @@ let worldWide = ({
     deaths: null,
     todayDeaths: null
 })
-//let countryList = [];
 let sortedList = [];
+let graphData = [];
 
 // Creates the worldwide object
 getWorldWideData = async () => {
@@ -58,37 +58,7 @@ setUpWorldWide = async () => {
 
     console.log('ww set up');
 }
-// Creates the countryList array with every country with the properties we need
-getCountryListData = async () => {
-    let response;
 
-    try {
-        response = await axios.get('https://corona.lmao.ninja/v2/countries')
-    } catch(err){
-        console.error(err);
-    }
-
-    const {data = [] } = response;
-    return data;
-}
-setUpCountryList = async () => {
-    let cl = await getCountryListData();
-        cl.forEach(element => {
-            countryList.push(
-                {
-                    flag: element.countryInfo.flag,
-                    country: element.country,
-                    cases: element.cases,
-                    todayCases: element.todayCases,
-                    active: element.active,
-                    recovered: element.recovered,
-                    todayRecovered: element.todayRecovered,
-                    deaths: element.deaths,
-                    todayDeaths: element.todayDeaths
-                }
-            )
-    })
-}
 // Create the sorted country list
 getSortedListData = async () => {
     let response;
@@ -124,7 +94,6 @@ setUpSortedList = async () => {
 
 // Set up once and then rely on updater to update the data 
 setUpWorldWide();
-//setUpCountryList();
 setUpSortedList();
 
 // Updater function - updates every 6 hours
@@ -135,6 +104,8 @@ updater = () => {
     setTimeout(updater, 43200000);
 }
 
+
+
 app.get('/worldwide', (req, res) => {
     try {
         res.send(worldWide);
@@ -143,12 +114,13 @@ app.get('/worldwide', (req, res) => {
     }
 })
 
-// app.get('/countrylist', (req, rest) => {
-//     res.send(countryList);
-// })
-
 app.get('/sortedlist', (req,res) => {
     res.send(sortedList);
+})
+
+app.post('/graphdata', (req,res) => {
+    console.log(req.body.countryName);
+    res.sendStatus(200);
 })
 
 app.listen(3001, () => {

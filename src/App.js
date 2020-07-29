@@ -66,22 +66,30 @@ function App() {
   }, [])
 
   const handleSwap = (choice) => {
-      sortedList.map(element => {
-        element.map(cl => {
-          if(cl.country == choice) {
-            setCurrent( () => ({
-              country: cl.country,
-              cases: cl.cases,
-              todayCases: cl.todayCases,
-              active: cl.active,
-              recovered: cl.recovered,
-              todayRecovered: cl.todayRecovered,
-              deaths: cl.deaths,
-              todayDeaths: cl.todayDeaths
-            }))
-          }
+      setCurrentToSelected(choice);
+      swapGraphsToSelected(choice);
+  }
+  const setCurrentToSelected = (choice) => {
+    sortedList.map(element => {
+      element.map(cl => {
+        if(cl.country === choice) {
+          setCurrent( () => ({
+            country: cl.country,
+            cases: cl.cases,
+            todayCases: cl.todayCases,
+            active: cl.active,
+            recovered: cl.recovered,
+            todayRecovered: cl.todayRecovered,
+            deaths: cl.deaths,
+            todayDeaths: cl.todayDeaths
+          }))
+        }
       })
     })
+  }
+  const swapGraphsToSelected = async (choice) => {
+    // Send Country name to back end
+    const res = await axios.post('./graphdata', {countryName: choice});
   }
   const handleReset = () => {
     setCurrent(()=> ({

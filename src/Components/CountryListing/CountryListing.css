@@ -7,6 +7,10 @@
     border-radius: 19px;
     margin: 1REM;
 }
+.listing:active{
+    opacity: .5;
+    transform: translateY(2px);
+}
 .listing h2{
     font-size: 18px;
 }

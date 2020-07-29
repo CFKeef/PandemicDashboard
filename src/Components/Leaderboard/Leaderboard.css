@@ -4,6 +4,17 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     overflow: hidden;
 }
+.leaderboard p {
+    margin: .3REM 0 0 0;
+    font-size: 15px;
+    padding: .5REM;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+.leaderboard p:active {
+    transform: translateY(2px);
+}
 .lbheader {
     display: flex;
     justify-content: center;

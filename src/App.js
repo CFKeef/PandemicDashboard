@@ -65,6 +65,36 @@ function App() {
       backEndCalls();
   }, [])
 
+  const handleSwap = (choice) => {
+      sortedList.map(element => {
+        element.map(cl => {
+          if(cl.country == choice) {
+            setCurrent( () => ({
+              country: cl.country,
+              cases: cl.cases,
+              todayCases: cl.todayCases,
+              active: cl.active,
+              recovered: cl.recovered,
+              todayRecovered: cl.todayRecovered,
+              deaths: cl.deaths,
+              todayDeaths: cl.todayDeaths
+            }))
+          }
+      })
+    })
+  }
+  const handleReset = () => {
+    setCurrent(()=> ({
+      country: 'all countries',
+      cases: worldWide.cases,
+      todayCases: worldWide.todayCases,
+      active: worldWide.active,
+      recovered: worldWide.recovered,
+      todayRecovered: worldWide.todayRecovered,
+      deaths: worldWide.deaths,
+      todayDeaths: worldWide.todayDeaths
+    }))  
+  }
   return (
     <div className="App">
       <Header />
@@ -72,7 +102,8 @@ function App() {
         worldWideData={worldWide}
         currentData={current}
         sortedData={sortedList}
-        updateCurrent={setCurrent}
+        updateCurrent={handleSwap}
+        resetData={handleReset}
       />
     </div>
   );

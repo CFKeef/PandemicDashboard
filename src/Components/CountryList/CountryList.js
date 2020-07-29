@@ -19,6 +19,7 @@ const CountryList = props => {
                 countryName={countryListing.country}
                 countryCount={countryListing.cases}
                 flag={countryListing.flag}
+                updateCurrent={props.selectCurrent}
             />)
         })})}
         </div>

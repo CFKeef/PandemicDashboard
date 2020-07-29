@@ -22,6 +22,7 @@ const Content = props => {
                 sortedData={props.sortedData}
                 updateCurrent={props.updateCurrent}
                 currentShown={props.currentData.country}
+                resetData={props.resetData}
             />
         </div>
     )

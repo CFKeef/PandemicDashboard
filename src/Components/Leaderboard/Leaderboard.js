@@ -10,9 +10,11 @@ const Leaderboard = props => {
             <div className="lbheader">
                 <h1>Most Afflicted</h1>
                 <h2>Currently shown:{props.currentShown}</h2>
+                <p onClick={props.resetData}>Reset to World Wide data</p>
             </div>
             <CountryList 
                 sortedData={props.sortedData}
+                selectCurrent={props.updateCurrent}
             />
         </div>
     )

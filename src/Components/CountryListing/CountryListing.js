@@ -15,7 +15,7 @@ const CountryListing = props => {
 
     return (
         <div id={name} className="listing">
-            <img className="cflag" src={flag}></img>
+            <img className="cflag" src={flag} alt={'Flag of ' + name}></img>
             <h2 className='cname' onClick={(e) => { props.updateCurrent(e.target.innerText) }}>{name}</h2>
             <h2 className="ccount">{count}</h2>
         </div>

@@ -10,7 +10,6 @@
     padding: .5REM;
     border-radius: 20px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
 }
 .leaderboard p:active {
     transform: translateY(2px);
@@ -20,6 +19,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 1rem;
 }
 .lbheader h1,h2{
     text-align: center;

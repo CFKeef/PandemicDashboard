@@ -16,6 +16,12 @@
         font-weight: 700;
         font-size: 25px;
     }
+    .textcontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
     .c1 {
         color: rgba(50, 103, 231, .75);
     }

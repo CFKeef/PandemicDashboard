@@ -1,9 +1,14 @@
-import React from 'react';
-import {VictoryLine, VictoryChart, VictoryTheme} from 'victory';
+import React,{useState, useEffect} from 'react';
+import {VictoryLine, VictoryChart} from 'victory';
  
 import './Graph.css';
 
 const Graph = (props) => {
+    const [graphData, setGraphData] = useState([]);
+
+    useEffect(() => {
+        setGraphData(props.selectedGraphData);
+    }, [props])
     return (
         <div className='graph'>
             <p>{props.title}</p>
@@ -14,15 +19,10 @@ const Graph = (props) => {
                     data: { stroke: "#c43a31" },
                     
                     }}
-                    data={[
-                            { x: 1, y: 2 },
-                            { x: 2, y: 3 },
-                            { x: 3, y: 5 },
-                            { x: 4, y: 4 },
-                            { x: 5, y: 7 }
-                    ]}
+                    data={graphData}
                 />
                 </VictoryChart>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     )
 }

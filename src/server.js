@@ -34,8 +34,7 @@ getWorldWideData = async () => {
         gzip: true,
         headers: {
             "Content-Type": "application/json"
-        },
-        proxy: "http://influx:whatsapassword@gate.dc.smartproxy.com:20000"
+        }
     };
 
     try {
@@ -104,7 +103,19 @@ updater = () => {
     setTimeout(updater, 43200000);
 }
 
+getGraphData = async (selected) => {
+    let response;
 
+    try{
+        response = await axios.get('https://disease.sh/v3/covid-19/historical/'+selected+'?lastdays=30');
+    }catch(err){
+        console.log(err);
+    }
+    
+    const { data = [] } = response;
+
+    return data;
+}
 
 app.get('/worldwide', (req, res) => {
     try {
@@ -118,9 +129,12 @@ app.get('/sortedlist', (req,res) => {
     res.send(sortedList);
 })
 
-app.post('/graphdata', (req,res) => {
-    console.log(req.body.countryName);
-    res.sendStatus(200);
+app.post('/graphdata', async (req,res) => {
+    let selected = req.body.countryName;
+
+    let response = await getGraphData(selected);
+
+    res.send(response);
 })
 
 app.listen(3001, () => {

@@ -17,6 +17,7 @@ const Content = props => {
                 worldWideData={props.worldWideData}
                 currentData={props.currentData}
                 sortedData={props.sortedData}
+                selectedGraphData={props.selectedGraphData}
             />
             <Leaderboard 
                 sortedData={props.sortedData}

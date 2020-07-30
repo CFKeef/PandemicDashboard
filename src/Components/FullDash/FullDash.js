@@ -5,10 +5,12 @@ import './FullDash.css';
 import MapCard from '../MapCard/MapCard.js';
 import GraphCard from '../GraphCard/GraphCard.js';
 
-const FullDash = () => {
+const FullDash = props => {
     return (
         <div className="fulldash">
-            <GraphCard />
+            <GraphCard 
+                selectedGraphData={props.selectedGraphData}
+            />
         </div>
     )
 }

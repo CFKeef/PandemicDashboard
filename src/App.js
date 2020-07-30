@@ -28,6 +28,7 @@ function App() {
       deaths: null,
       todayDeaths: null
   })
+  const [currentCaseDates, setCurrentCaseDates] = useState([]);
   const [sortedList, setSortedList] = useState([])
 
   useEffect( () => {
@@ -62,6 +63,7 @@ function App() {
         // Update SortedList's
         setSortedList(prevState => [...prevState, sl.data]);
       }
+      setGraphToAllData();
       backEndCalls();
   }, [])
 
@@ -87,9 +89,31 @@ function App() {
       })
     })
   }
+  const setGraphToAllData = async () => {
+    // Send Country name to back end
+    let res = await axios.post('https://disease.sh/v3/covid-19/historical/all?lastdays=30');
+    let cases = res.data.cases;
+    
+    let stringArray = [];
+
+    for(const date in cases){
+      let str = {x: new date(date), y: cases[date]};
+      stringArray.push(str);
+    }
+    setCurrentCaseDates( () => [stringArray]);
+  }
   const swapGraphsToSelected = async (choice) => {
     // Send Country name to back end
-    const res = await axios.post('./graphdata', {countryName: choice});
+    let res = await axios.post('./graphdata', {countryName: choice});
+    let cases = res.data.timeline.cases;
+    
+    let stringArray = [];
+
+    for(const date in cases){
+      let str = {x: new Date(date), y: cases[date]};
+      stringArray.push(str);
+    }
+    setCurrentCaseDates( () => [ stringArray]);
   }
   const handleReset = () => {
     setCurrent(()=> ({
@@ -102,6 +126,7 @@ function App() {
       deaths: worldWide.deaths,
       todayDeaths: worldWide.todayDeaths
     }))  
+    setGraphToAllData();
   }
   return (
     <div className="App">
@@ -110,8 +135,11 @@ function App() {
         worldWideData={worldWide}
         currentData={current}
         sortedData={sortedList}
-        updateCurrent={handleSwap}
+        selectedGraphData={currentCaseDates}
+
         resetData={handleReset}
+        updateCurrent={handleSwap}
+        changeGraphToSelected={swapGraphsToSelected}
       />
     </div>
   );

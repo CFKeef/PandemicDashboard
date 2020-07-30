@@ -63,14 +63,10 @@ function App() {
         // Update SortedList's
         setSortedList(prevState => [...prevState, sl.data]);
       }
-      setGraphToAllData();
+      setGraphStateToAllData();
       backEndCalls();
   }, [])
 
-  const handleSwap = (choice) => {
-      setCurrentToSelected(choice);
-      swapGraphsToSelected(choice);
-  }
   const setCurrentToSelected = (choice) => {
     sortedList.map(element => {
       element.map(cl => {
@@ -89,7 +85,7 @@ function App() {
       })
     })
   }
-  const setGraphToAllData = async () => {
+  const setGraphStateToAllData = async () => {
     // Send Country name to back end
     let res = await axios.post('https://disease.sh/v3/covid-19/historical/all?lastdays=30');
     let cases = res.data.cases;
@@ -126,8 +122,14 @@ function App() {
       deaths: worldWide.deaths,
       todayDeaths: worldWide.todayDeaths
     }))  
-    setGraphToAllData();
+    setGraphStateToAllData();
   }
+  const handleSwap = (choice) => {
+    setCurrentToSelected(choice);
+    swapGraphsToSelected(choice);
+}
+
+
   return (
     <div className="App">
       <Header />

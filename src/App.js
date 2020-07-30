@@ -106,7 +106,7 @@ function App() {
     let stringArray = [];
 
     for(const date in cases){
-      let str = {x: new Date(date), y: cases[date]};
+      let str = {x: new Date(date).toLocaleDateString('en-US'), y: cases[date]};
       stringArray.push(str);
     }
     setCurrentCaseDates( () => [ stringArray]);

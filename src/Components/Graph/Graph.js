@@ -8,7 +8,6 @@ const Graph = (props) => {
 
     useEffect(() => {
         setGraphData(props.graphData);
-
     }, [])
     return (
         <div className='graph'>

@@ -89,7 +89,7 @@ function App() {
     // Send Country name to back end
     let res = await axios.post('./graphdata', {countryName: 'all'});
  
-    setCurrentCaseDates( prevState => [...prevState, res.data]);
+    setCurrentCaseDates( () => [res.data]);
   }
   const swapGraphsToSelected = async (choice) => {
     // Send Country name to back end

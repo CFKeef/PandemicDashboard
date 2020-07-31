@@ -92,6 +92,7 @@ setUpSortedList = async () => {
     console.log('sl set up');
 }
 
+// Create the world wide graph dataset
 getGraphDataWorldWide = async () => {
     let response;
 
@@ -122,7 +123,6 @@ setUpGraphDataWorldWide();
 // Updater function - updates every 6 hours
 updater = () => {
     setUpWorldWide();
-    //setUpCountryList();
     setUpSortedList();
     setUpGraphDataWorldWide();
     setTimeout(updater, 43200000);

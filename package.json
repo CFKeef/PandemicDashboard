@@ -16,9 +16,9 @@
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",
     "react-scripts": "3.4.1",
+    "react-vis": "^1.11.7",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6",
-    "victory": "^35.0.7"
+    "request-promise": "^4.2.6"
   },
   "scripts": {
     "start": "react-scripts start",

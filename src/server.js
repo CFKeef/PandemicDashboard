@@ -20,6 +20,7 @@ let worldWide = ({
     todayDeaths: null
 })
 let sortedList = [];
+let graphDataWorldWide = [];
 let graphData = [];
 
 // Creates the worldwide object
@@ -91,15 +92,39 @@ setUpSortedList = async () => {
     console.log('sl set up');
 }
 
+getGraphDataWorldWide = async () => {
+    let response;
+
+    try {
+        response = await axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=30')
+    } catch(err){
+        console.error(err);
+    }
+
+    const {data = [] } = response;
+    return data;  
+}
+setUpGraphDataWorldWide = async () => {
+    let gd = await getGraphDataWorldWide();
+    let cases = gd.cases;
+
+    for(const date in cases){
+      let str = {x: new Date(date).toLocaleDateString('en-US'), y: cases[date]};
+      graphData.push(str);
+    }
+
+    console.log("gd is up");
+}
 // Set up once and then rely on updater to update the data 
 setUpWorldWide();
 setUpSortedList();
-
+setUpGraphDataWorldWide();
 // Updater function - updates every 6 hours
 updater = () => {
     setUpWorldWide();
     //setUpCountryList();
     setUpSortedList();
+    setUpGraphDataWorldWide();
     setTimeout(updater, 43200000);
 }
 
@@ -118,11 +143,7 @@ getGraphData = async (selected) => {
 }
 
 app.get('/worldwide', (req, res) => {
-    try {
         res.send(worldWide);
-    }catch(err){
-        res.send("somethings fucked");
-    }
 })
 
 app.get('/sortedlist', (req,res) => {
@@ -132,7 +153,13 @@ app.get('/sortedlist', (req,res) => {
 app.post('/graphdata', async (req,res) => {
     let selected = req.body.countryName;
 
-    let response = await getGraphData(selected);
+    let response;
+
+    if(selected == 'all'){
+        response = graphData;
+    } else{
+        response = await getGraphData(selected);
+    }
 
     res.send(response);
 })

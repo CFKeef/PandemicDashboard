@@ -62,8 +62,8 @@ function App() {
 
         // Update SortedList's
         setSortedList(prevState => [...prevState, sl.data]);
+        setGraphStateToAllData();
       }
-      setGraphStateToAllData();
       backEndCalls();
   }, [])
 
@@ -87,16 +87,9 @@ function App() {
   }
   const setGraphStateToAllData = async () => {
     // Send Country name to back end
-    let res = await axios.post('https://disease.sh/v3/covid-19/historical/all?lastdays=30');
-    let cases = res.data.cases;
-    
-    let stringArray = [];
-
-    for(const date in cases){
-      let str = {x: new date(date).toLocaleDateString('en-US'), y: cases[date]};
-      stringArray.push(str);
-    }
-    setCurrentCaseDates( () => [stringArray]);
+    let res = await axios.post('./graphdata', {countryName: 'all'});
+ 
+    setCurrentCaseDates( prevState => [...prevState, res.data]);
   }
   const swapGraphsToSelected = async (choice) => {
     // Send Country name to back end

@@ -102,7 +102,7 @@ getGraphDataWorldWide = async () => {
         console.error(err);
     }
 
-    const {data = [] } = response;
+    const {data } = response;
     return data;  
 }
 setUpGraphDataWorldWide = async () => {
@@ -110,7 +110,7 @@ setUpGraphDataWorldWide = async () => {
     let cases = gd.cases;
 
     for(const date in cases){
-      let str = {x: new Date(date).toLocaleDateString('en-US'), y: cases[date]};
+      let str = {x: new Date(date), y: cases[date]};
       graphData.push(str);
     }
 

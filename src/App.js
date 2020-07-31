@@ -61,7 +61,7 @@ function App() {
         }))
 
         // Update SortedList's
-        setSortedList(prevState => [...prevState, sl.data]);
+        setSortedList((prevState)=> [...prevState, sl.data]);
         setGraphStateToAllData();
       }
       backEndCalls();
@@ -89,7 +89,7 @@ function App() {
     // Send Country name to back end
     let res = await axios.post('./graphdata', {countryName: 'all'});
  
-    setCurrentCaseDates( () => [res.data]);
+    setCurrentCaseDates( () => res.data);
   }
   const swapGraphsToSelected = async (choice) => {
     // Send Country name to back end
@@ -99,10 +99,10 @@ function App() {
     let stringArray = [];
 
     for(const date in cases){
-      let str = {x: new Date(date).toLocaleDateString('en-US'), y: cases[date]};
+      let str = {x: new Date(date), y: cases[date]};
       stringArray.push(str);
     }
-    setCurrentCaseDates( () => [ stringArray]);
+    setCurrentCaseDates( () => stringArray);
   }
   const handleReset = () => {
     setCurrent(()=> ({
@@ -121,8 +121,6 @@ function App() {
     setCurrentToSelected(choice);
     swapGraphsToSelected(choice);
 }
-
-
   return (
     <div className="App">
       <Header />

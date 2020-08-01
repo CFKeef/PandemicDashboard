@@ -20,12 +20,11 @@ const Graph = (props) => {
     return (
         <div className='graph'>
             <p>{props.title}</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <LineChart width={586} height={480} data={data} style={{ "width": "100%", "margin": "0 auto" }}>
+            <LineChart width={586} height={480} data={data} style={{ "width": "100%", "margin": "0 auto" }} margin={{left: 50}} >
                 <Line type="montone" dataKey="cases" stroke="#8884d8" />
                 <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                 <XAxis />
-                <YAxis />
+                <YAxis type="number" domain={['dataMin', 'dataMax']} scale={props.title} />
                 <Tooltip />
             </LineChart>
         </div>

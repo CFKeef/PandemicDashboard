@@ -3,7 +3,8 @@ Displays a dashboard of worldwide information related to COVID 19
 
 Allows for the user to pick countries specifically or just view global data
 
-![UI Preview](https://raw.github.com/CFKeef/PandemicDashboard/blob/master/firefox_8fwdkteiFf.png)
+## UI
+![UI Preview](https://raw.githubusercontent.com/CFKeef/PandemicDashboard/master/firefox_8fwdkteiFf.png)
 
 ## Technologies
 React: Front End
